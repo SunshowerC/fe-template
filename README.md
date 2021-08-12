@@ -7,7 +7,7 @@ common fe template
 ### nestjs@8
 - [ ] 日志规范
   - [x] http context 
-  - [ ] incoming req / outgoing req & resp 
+  - [x] incoming req / outgoing req & resp 
   - [ ] sql 查询语句以及响应耗时 
   - [ ] grpc 请求 incoming/ outgoing 
 - typeorm 

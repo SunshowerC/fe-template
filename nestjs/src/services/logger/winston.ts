@@ -3,8 +3,9 @@
 
 import {format, transports, createLogger} from 'winston'
 import dayjs from 'dayjs'
-import { isLocal } from 'src/config'
+import { isLocal, logPath } from 'src/config'
 import { FileTransportOptions } from 'winston/lib/winston/transports'
+import DailyRotateFile from 'winston-daily-rotate-file'
 
 const formatConf = [
   format.timestamp({
@@ -23,13 +24,30 @@ const formatConf = [
   })
 ].filter(Boolean) as any[]
 
-// TODO: rotate log
-const logFileConf: FileTransportOptions = {
-  rotationFormat: ()=>{
-    return '.' + dayjs().format('YYYY-MM-DD')
-  } ,
-  maxsize: 7,
+const opt = {
+  datePattern: 'YYYY-MM-DD',
+  dirname: logPath,
+  maxFiles: 14
 }
+
+const levels = ['error', 'warn', 'info', 'debug']
+
+const rotateTransports = levels.map((level) => {
+  const symLinkOpt =
+    level === 'debug'
+      ? {
+          createSymlink: true,
+          symlinkName: 'all.log'
+        }
+      : {}
+
+  return new DailyRotateFile({
+    filename: `${level}.log.%DATE%`,
+    level,
+    ...opt,
+    ...symLinkOpt
+  })
+})
 
 const logger = createLogger({
   level: 'debug',
@@ -37,9 +55,8 @@ const logger = createLogger({
     ...formatConf
   ),
   transports: [
-    new transports.File({ filename: 'logs/error.log', level: 'error', ...logFileConf }),
-    new transports.File({ filename: 'logs/warn.log', level: 'warn', ...logFileConf }),
-    new transports.File({ filename: 'logs/all.log', ...logFileConf }),
+    ...rotateTransports
+    
   ],
   // 如果是本地环境，抛出打印出错误信息。否则会被Winston 捕获并日志
   exceptionHandlers:  undefined  // : [rotateTransports[0]]

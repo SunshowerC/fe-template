@@ -1,7 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { appLogger, AppLogger } from './services/logger/app-logger.service';
-import httpContext from 'express-http-context'
+import { appConfigure } from './config/app-configure';
+import { appLogger } from './services/logger/app-logger.service';
+import {apiPrefix, env} from './config/index'
+
 
 const PORT = process.env.PORT ?? 3000
 
@@ -14,9 +16,15 @@ async function bootstrap() {
     logger: appLogger
   });
 
-  app.use(httpContext.middleware)
-
   
+
+  appConfigure(app)
+
+  app.setGlobalPrefix(apiPrefix)
   await app.listen(PORT);
+  appLogger.info(`app is running on ${PORT}`, {
+    env,
+    apiPrefix
+  })
 }
 bootstrap();

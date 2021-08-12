@@ -18,10 +18,10 @@ export const getBaseInfo = (extra: any = {}) => {
     }
   }
 
-  return Object.assign({}, extra , {
+  return Object.assign({
     reqId,
-    operator: profile.email
-  })
+    operator: profile.operator
+  }, extra)
 }
 
 
