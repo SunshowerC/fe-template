@@ -1,8 +1,7 @@
 
 
 import { Injectable } from '@nestjs/common'
-import { InjectConnection, InjectRepository,  } from '@nestjs/typeorm'
-import { Connection, Repository , EntityTarget} from 'typeorm'
+import { Repository } from 'typeorm'
 import { removeFalseLikeKey } from 'src/utils/common'
 import { PaginationDto } from 'src/pipes/pagination.pipe'
 

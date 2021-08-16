@@ -7,11 +7,11 @@ import { FundPredictEntity } from './entities/fund.entity';
 import { AllExceptionsFilter } from './filters/all-exception.filter';
 import { TransformRespInterceptor } from './interceptors/transform-res.interceptor';
 import { FundModule } from './modules/fund/fund.module';
-import { MysqlModule } from './modules/typeorm.module';
+import { DatabaseModule } from './modules/db/database.module';
 
 @Module({
   imports: [
-    MysqlModule,
+    DatabaseModule,
     // TODO: auto find *.module.ts and import 
     FundModule
 
