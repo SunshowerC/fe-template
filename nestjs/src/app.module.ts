@@ -1,7 +1,9 @@
 import { Module } from '@nestjs/common';
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { FundPredictEntity } from './entities/fund.entity';
 import { AllExceptionsFilter } from './filters/all-exception.filter';
 import { TransformRespInterceptor } from './interceptors/transform-res.interceptor';
 import { FundModule } from './modules/fund/fund.module';
