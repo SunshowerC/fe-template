@@ -4,9 +4,16 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AllExceptionsFilter } from './filters/all-exception.filter';
 import { TransformRespInterceptor } from './interceptors/transform-res.interceptor';
+import { FundModule } from './modules/fund/fund.module';
+import { MysqlModule } from './modules/typeorm.module';
 
 @Module({
-  imports: [],
+  imports: [
+    MysqlModule,
+    // TODO: auto find *.module.ts and import 
+    FundModule
+
+  ],
   controllers: [AppController],
   providers: [
     AppService,
