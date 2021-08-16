@@ -1,5 +1,13 @@
 
 
+export const sleep = (millSecond: number) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, millSecond)
+  })
+}
+
+
+
 /**
  * 移除一个对象 Boolean(val) === false 的值
  * @param obj - 入参

@@ -40,7 +40,7 @@ export class FundDao {
   async query(body: Partial<CurrEntity> & PaginationDto = {}) {
     const [data, total] = await this.curRepo.findAndCount({
       skip: 0,
-      take: 10,
+      take: 1000,
       order: {
         createTime: 'DESC'
       },

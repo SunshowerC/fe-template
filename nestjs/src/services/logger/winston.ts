@@ -14,7 +14,7 @@ const formatConf = [
       return dayjs(new Date()).format('YYYY-MM-DD HH:mm:ss.SSS(ZZ)')
       }) 
   }),
-  isLocal ? format.colorize() : null,
+  // isLocal ? format.colorize() : null,
   format.printf((infoObj) => {
 
     const { timestamp, message, level, module, reqId, ...extra } = infoObj
