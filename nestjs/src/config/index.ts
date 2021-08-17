@@ -1,6 +1,11 @@
 
 import appRoot from 'app-root-path'
 import { resolve } from 'path'
+import pkgJson from '../../package.json'
+
+
+export const appVersion = pkgJson.version
+
 
 export const apiPrefix = '/api'
 

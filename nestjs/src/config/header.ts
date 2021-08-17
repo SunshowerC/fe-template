@@ -9,3 +9,4 @@ export const SEQ_ID_HEADER = 'ReqId'
 export const PROFILE_HEADER = 'profile'
 
 
+export const APP_VERSION_HEADER = 'X-Version'
