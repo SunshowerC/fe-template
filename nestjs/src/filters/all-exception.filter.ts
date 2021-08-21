@@ -5,6 +5,7 @@ import {
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
+import { appLogger } from 'src/services/logger/app-logger.service';
 
 @Catch()
 export class AllExceptionsFilter implements ExceptionFilter {
@@ -21,6 +22,13 @@ export class AllExceptionsFilter implements ExceptionFilter {
 
     const message = isError ?  exception.message : null
     const stack = isError ?  exception.stack : null
+
+    
+    appLogger.error(message, {
+      stack,
+      status,
+      path: request.url
+    })
 
     response.status(status).json({
       statusCode: status,

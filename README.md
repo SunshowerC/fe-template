@@ -17,5 +17,6 @@ common fe template
     1. 可以被用户知晓具体原因的，返回 error code + 具体的 error msg 。 前端 notify error_msg
     2. 不能给用户知晓原因的，返回 error code。 前端 notify xxx failed ?
   - 上游接口异常 被捕获到的。
+- 请求数据，响应数据的 camel case 、 snakeCase 格式化
 
 ### react ant-pro

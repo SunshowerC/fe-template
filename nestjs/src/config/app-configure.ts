@@ -4,6 +4,7 @@ import { INestApplication } from '@nestjs/common'
 import { addRequestId } from '../middlewares/request-id.middleware'
 import { TimeoutInterceptor } from 'src/interceptors/timeout.interceptor'
 import bodyParser from 'body-parser'
+import { CaseFormatMiddleware } from 'src/middlewares/case-format.middleware'
 
 export const appConfigure = (app: INestApplication)=>{
   
@@ -21,7 +22,7 @@ export const appConfigure = (app: INestApplication)=>{
 
   app.use(httpContext.middleware)
 
-  app.use(addRequestId)
+  app.use(addRequestId, CaseFormatMiddleware)
   app.useGlobalInterceptors(new TimeoutInterceptor())
 }
 

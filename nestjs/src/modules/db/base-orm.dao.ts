@@ -42,7 +42,7 @@ export class BaseOrmDao {
   async query(body: Partial<CurrEntity> & PaginationDto = {}) {
     const [data, total] = await this.curRepo.findAndCount({
       skip: 0,
-      take: 1000,
+      take: 10,
       order: {
         createTime: 'DESC'
       },
