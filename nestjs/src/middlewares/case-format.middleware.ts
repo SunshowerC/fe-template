@@ -3,7 +3,7 @@ import { NextFunction } from "express";
 import camelcaseKeys from 'camelcase-keys'
 import snakecaseKeys from 'snakecase-keys'
 import { isObject } from "class-validator";
-import { CaseFormat, CustomFormatKey, reqAndRespTransform } from "src/config/data-transform";
+import { CaseFormat, CustomFormatKey, REQ_TRANSFORM, RESP_TRANSFORM } from "src/config/data-transform";
 
 const excludeKeys = {
   exclude: [CustomFormatKey]
@@ -13,7 +13,7 @@ export const CaseFormatMiddleware = (req: Request, res: Response, next: NextFunc
   const isJson = req.headers['content-type']?.includes('application/json')
 
   if(isObject(req.body) && isJson) {
-    const formatReqCase = req.body[CustomFormatKey] ?? reqAndRespTransform.req.case
+    const formatReqCase = req.body[CustomFormatKey] ?? REQ_TRANSFORM.case
     
     switch (formatReqCase) {
       case CaseFormat.CamelCase: 
@@ -49,7 +49,7 @@ export const CaseFormatMiddleware = (req: Request, res: Response, next: NextFunc
                 next(error);
             });
         } else {
-          const formatRespCase = data[CustomFormatKey] ?? reqAndRespTransform.res.case
+          const formatRespCase = data[CustomFormatKey] ?? RESP_TRANSFORM.case
 
           switch (formatRespCase) {
             case CaseFormat.CamelCase: 
