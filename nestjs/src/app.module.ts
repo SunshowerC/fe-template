@@ -8,12 +8,19 @@ import { AllExceptionsFilter } from './filters/all-exception.filter';
 import { TransformRespInterceptor } from './interceptors/transform-res.interceptor';
 import { FundModule } from './modules/fund/fund.module';
 import { DatabaseModule } from './modules/db/database.module';
+import { AutoModule } from './modules/auto-import';
+import path from 'path'
 
 @Module({
   imports: [
-    DatabaseModule,
-    // TODO: auto find *.module.ts and import 
-    FundModule
+    //  auto find *.module.ts and import 
+    ...AutoModule.register({
+      modulesPath: path.resolve(__dirname, './modules')
+    }),
+
+    // DatabaseModule,
+    // FundModule,
+    
 
   ],
   controllers: [AppController],

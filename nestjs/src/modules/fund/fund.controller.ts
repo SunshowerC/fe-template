@@ -48,7 +48,7 @@ export class FundController {
     })
 
     res.send({
-      [CustomFormatKey]: CaseFormat.SnakeCase,
+      // [CustomFormatKey]: CaseFormat.SnakeCase,
       ...result
     })
 

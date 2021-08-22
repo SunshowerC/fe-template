@@ -8,3 +8,8 @@ import { databaseProviders } from './database.service';
   exports: [...databaseProviders],
 })
 export class DatabaseModule {}
+
+
+export default {
+  ss: 'sss'
+}
