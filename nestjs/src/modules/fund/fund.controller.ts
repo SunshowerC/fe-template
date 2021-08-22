@@ -23,8 +23,10 @@ export class FundController {
   async queryData() {
     
     const result = await this.fundDao.query({
-      // skip:0 ,
-      // take: 10
+      
+    }, {
+      current: 1,
+      pageSize: 20
     })
 
     
@@ -40,8 +42,9 @@ export class FundController {
 
 
     const result = await  this.fundDao.query({
-      // skip:0 ,
-      // take: 10
+    }, {
+      current: 2,
+      pageSize: 20
     })
 
     res.send({
@@ -51,28 +54,5 @@ export class FundController {
 
     // return result 
   }
-
-  // @Get('query_fund_data2') 
-  // @UsePipes(PaginationPipe)
-  // async queryData2() {
-    
-  //   const result = await this.fundDao2.query({
-  //     // skip:0 ,
-  //     // take: 10
-  //   })
-  //   return result 
-  // }
-
-
-  // @Get('query_fund_data3') 
-  // @UsePipes(PaginationPipe)
-  // async queryData3() {
-    
-  //   const result = await this.fundDao3.query({
-  //     // skip:0 ,
-  //     // take: 10
-  //   })
-  //   return result 
-  // }
 
 }

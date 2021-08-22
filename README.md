@@ -18,5 +18,7 @@ common fe template
     2. 不能给用户知晓原因的，返回 error code。 前端 notify xxx failed ?
   - 上游接口异常 被捕获到的。
 - 请求数据，响应数据的 camel case 、 snakeCase 格式化
+- sql 响应数据的 camel case 、 snakeCase 格式化 【nestjs】
+- 单元测试，集成测试
 
 ### react ant-pro

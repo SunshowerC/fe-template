@@ -10,12 +10,11 @@ import { BaseOrmDao } from 'src/modules/db/base-orm.dao'
 
 
 @Injectable()
-export class FundService extends BaseOrmDao {
+export class FundService extends BaseOrmDao<FundPredictEntity> {
   constructor(
     @Inject(FundPredictEntity)
     curRepo: Repository<FundPredictEntity>,
   ) {
     super(curRepo)
   }
-
 }

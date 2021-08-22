@@ -1,19 +1,27 @@
 
 
 import { Injectable } from '@nestjs/common'
-import { Repository } from 'typeorm'
+import { FindOneOptions, Repository } from 'typeorm'
 import { removeFalseLikeKey } from 'src/utils/common'
-import { PaginationDto } from 'src/pipes/pagination.pipe'
+import { PaginationDto, transToFullPagination } from 'src/pipes/pagination.pipe'
+import { EntityFieldsNames } from 'typeorm/common/EntityFieldsNames'
 
-type CurrEntity = any
+// type CurrEntity = any
+
+interface EntityType {
+  id: string
+
+  createTime: Date
+  updateTime: Date
+}
 
 
 @Injectable()
-export class BaseOrmDao {
-  private curRepo: Repository<any>
+export class BaseOrmDao<CurrEntity extends EntityType> {
+  private curRepo: Repository<CurrEntity>
 
   constructor(
-    reposity: Repository<any>
+    reposity: Repository<CurrEntity>
   ) {
     this.curRepo = reposity
   }
@@ -39,13 +47,17 @@ export class BaseOrmDao {
   /**
    * 查
    */
-  async query(body: Partial<CurrEntity> & PaginationDto = {}) {
+  async query(body: Partial<CurrEntity>, pagination?: PaginationDto ) {
+
+    const defaultOrder: FindOneOptions<EntityType>['order'] = {
+      createTime: 'DESC'
+    }
+    const fullPg = transToFullPagination(pagination || {})
+     
     const [data, total] = await this.curRepo.findAndCount({
-      skip: 0,
-      take: 10,
-      order: {
-        createTime: 'DESC'
-      },
+      skip: fullPg.pagination.skip,
+      take: fullPg.pagination.take,
+      order: defaultOrder,
       where: {
         ...removeFalseLikeKey(body, [0])
       }

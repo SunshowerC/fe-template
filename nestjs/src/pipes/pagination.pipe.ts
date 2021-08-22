@@ -55,31 +55,49 @@ export class PaginationDto {
   
 }
 
+export interface PaginationParams {
+  pagination: Required<PaginationDto>
+}
+
 
 /**
  * 补全所有分页参数
  */
 export const transToFullPagination = <T extends Record<string, any>>(
   value: T
-): Required<PaginationDto> & T => {
+): T & PaginationParams => {
+  // client 传入的值
   const result: any = Object.assign({}, value)
-  const pageSize = result.pageSize || result.limit || 10
-  const current = result.current || result.page || result.pageId || result.pages || 1
-  const offset = result.offset || (current - 1) * pageSize || 0
+  let {
+    pageSize, limit, 
+    current, page, pageId, pages, 
+    offset
+  } = result 
 
-  result.pageSize = pageSize
-  result.limit = pageSize
-  result.take = pageSize
+  // 
+  pageSize = pageSize || limit || 10
+  current = current || page || pageId || pages || 1
+  offset = offset || (current - 1) * pageSize || 0
 
-  result.current = current
-  result.page = current
-  result.pages = current
-  result.pageId = current
+  let pagination: Required<PaginationDto> = {
+    pageSize : pageSize,
+    limit : pageSize,
+    take : pageSize,
 
-  result.offset = offset
-  result.skip = offset
+    current : current,
+    page : current,
+    pages : current,
+    pageId : current,
 
-  return result
+    offset : offset,
+    skip : offset,
+  }
+  
+
+  return {
+    ...result,
+    pagination
+  }
 }
 @Injectable()
 export class PaginationPipe<T extends PaginationDto> implements PipeTransform<T> {

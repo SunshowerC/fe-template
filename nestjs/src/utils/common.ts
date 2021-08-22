@@ -13,7 +13,7 @@ export const sleep = (millSecond: number) => {
  * @param obj - 入参
  * @param excludes - 视为 有效的值
  */
-export const removeFalseLikeKey = (obj: object, excludes: any[] = []) => {
+export const removeFalseLikeKey = <T = any>(obj: T, excludes: any[] = []):T => {
   for (const k in obj) {
     if (!obj[k] && !excludes.includes(obj[k])) {
       delete obj[k]

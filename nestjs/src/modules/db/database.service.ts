@@ -16,6 +16,7 @@ const databaseProvider = {
     logger: new OrmLogger('all'),
     logging: 'all',
 
+
     // 最大的正常执行时间，如果 sql 执行时间大于这个值，
     // 将会触发 logQuerySlow ，设置为 -1 即100%触发 logQuerySlow
     // sql 执行大于 1000ms 视为慢查询，记录日志
