@@ -21,7 +21,8 @@ const databaseProvider = {
     // 将会触发 logQuerySlow ，设置为 -1 即100%触发 logQuerySlow
     // sql 执行大于 1000ms 视为慢查询，记录日志
     // @important 
-    // - sql query 日志是查询前，结果还未响应就开始记录的
+    // - [存疑] sql query 日志是查询前，结果还未响应就开始记录的
+    // - 发现，db 连接超时，不会有 sql query log ，说明先进行 db 连接，再 log ?
     // - slow query 是查询结果出来后，才记录的日志
     maxQueryExecutionTime: 2000,
 

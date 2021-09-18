@@ -4,7 +4,6 @@ import { Injectable } from '@nestjs/common'
 import { FindOneOptions, Repository } from 'typeorm'
 import { removeFalseLikeKey } from 'src/utils/common'
 import { PaginationDto, transToFullPagination } from 'src/pipes/pagination.pipe'
-import { EntityFieldsNames } from 'typeorm/common/EntityFieldsNames'
 
 // type CurrEntity = any
 
