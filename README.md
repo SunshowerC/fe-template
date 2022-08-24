@@ -30,5 +30,6 @@ common fe template
 - [ ] open api 自动配置
 - [ ] 审批申请工作流
 - [ ] google auth 登录，refresh token / access token 
+- [ ] tenant 租户模型 
 
 ### react ant-pro
