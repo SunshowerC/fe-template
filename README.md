@@ -20,6 +20,14 @@ common fe template
 - [x] 请求数据，响应数据的 camel case 、 snakeCase 格式化
 - [x] sql 响应数据的 camel case 、 snakeCase 格式化 【nestjs】
 - [x] nestjs 自动查询 *.module.ts 文件，自动注入，避免手动加载
+- [ ] 接口目录自动读取自动按规则注册接口
 - 单元测试，集成测试
+
+
+基础系统管理功能
+- [ ] RBAC 权限管理
+- [ ] 系统接口访问日志与记录
+- [ ] open api 自动配置
+- [ ] 
 
 ### react ant-pro
