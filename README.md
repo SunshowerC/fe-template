@@ -25,7 +25,7 @@ common fe template
 
 
 基础系统管理功能
-- [ ] RBAC 权限管理
+- [ ] RBAC 权限管理: https://github.com/casbin/casbin#examples
 - [ ] 系统接口访问日志与记录
 - [ ] open api 自动配置
 - [ ] 审批申请工作流
