@@ -10,11 +10,15 @@ const localDB = {
 
 const gcpDB = {
   username: 'root',
-  host: '34.97.173.215',  
-  port: 8806,
-  password: 'MDbai1@3',
-
-  database: 'fund',
+  // host: '34.97.173.215',  
+  // port: 8806,
+  // password: 'MDbai1@3',
+  
+  host: '127.0.0.1',  
+  port: 3306,
+  password: '12345678',
+  
+  database: 'fund_tab',
 }
 
 
