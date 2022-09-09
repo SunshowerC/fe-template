@@ -1,7 +1,7 @@
 
 
 // APP.js
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Button, Card } from 'antd'
 
 import BpmnModeler from 'bpmn-js/lib/Modeler';
@@ -32,6 +32,7 @@ import { xmlstr } from './testxml';
 
 // import 'bpmn-js-properties-panel/dist/assets/bpmn-js-properties-panel.css'
 import { PageContainer } from '@ant-design/pro-layout';
+import { PropertiesEditorDrawerRef, PropertiesEditorDrawer} from './components/PropertiesEditor';
 
 
 // 全局组件
@@ -40,6 +41,9 @@ function App() {
   let bpmnModeler: BpmnModeler;
   // let [bpmnModeler, setModeler] = useState<BpmnModeler>(null)
   let [curXml, setCurXml] = useState<string>()
+
+  let drawerRef = useRef<PropertiesEditorDrawerRef>(null)
+  
 
   
   useEffect(() => {
@@ -57,9 +61,9 @@ function App() {
       container: '#canvas', // 这里为数组的第一个元素
       height: '100%',
       //添加控制板
-      propertiesPanel: {
-        parent: '.properties-panel'
-      },
+      // propertiesPanel: {
+      //   parent: '.properties-panel'
+      // },
       additionalModules: [
         // 左边工具栏以及节点
         BpmnPropertiesPanelModule, // 这里引入的是右侧属性栏这个框
@@ -128,12 +132,13 @@ function App() {
 
         // 读取节点 xml 属性
         const properties = e.element.businessObject
-        console.log(`${eventType}`,{e, properties})
+        // console.log(`${eventType}`,{e, properties})
         if(eventType === 'element.click') {
-          modeling.updateProperties(e.element, {
-            name: '我是修改后的Task名称', // 在 e.element.businessObject.name 
-            customText: '我是自定义的text属性' // 自定义的属性在 e.element.businessObject.$attrs.customText
-          })
+          drawerRef.current?.open({})
+          // modeling.updateProperties(e.element, {
+          //   name: '我是修改后的Task名称', // 在 e.element.businessObject.name 
+          //   customText: '我是自定义的text属性' // 自定义的属性在 e.element.businessObject.$attrs.customText
+          // })
         }
       })
     })
@@ -143,7 +148,7 @@ function App() {
   }
 
 
-  console.log('curXml', curXml)
+  // console.log('curXml', curXml)
   return (
     <PageContainer content="bpmn 流程">
       <Card title="编辑器" className='bpmn-card' extra={[
@@ -152,11 +157,12 @@ function App() {
         <div className='bpmn-container'>
           {/* bpmn容器 */}
           <div id="canvas" className="canvas-container"></div>
-          <div className="properties-panel"></div>
+          {/* <div className="properties-panel"></div> */}
         </div>
 
       </Card>
 
+      <PropertiesEditorDrawer ref={drawerRef} ></PropertiesEditorDrawer>
     </PageContainer>
   );
 }
