@@ -1,4 +1,12 @@
 @import '~antd/es/style/themes/default.less';
+// @import '~@stc-fe/stc-bpmn-viewer/dist/index.css';
+@import '~bpmn-js/dist/assets/diagram-js.css'; // 左边工具栏以及编辑节点的样式
+@import '~bpmn-js/dist/assets/bpmn-font/css/bpmn.css';
+@import '~bpmn-js/dist/assets/bpmn-font/css/bpmn-codes.css';
+@import '~bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css';
+// @import '~bpmn-js-properties-panel/dist/assets/bpmn-js-properties-panel.css';
+@import '~bpmn-js-properties-panel/dist/assets/properties-panel.css';
+@import '~diagram-js-minimap/assets/diagram-js-minimap.css';
 
 html,
 body,
@@ -55,3 +63,32 @@ ol {
     min-height: 100vh;
   }
 }
+
+.bpmn-card {
+  
+}
+
+.bpmn-container {
+  /* background-color: #282c34 */
+  height: calc(100vh - 280px);
+  display: flex;
+}
+.canvas-container{
+  flex:1;
+  width: 100%;
+  height: 100%;
+  
+  background: linear-gradient(rgba(240, 240, 245, 0.5), rgba(240, 240, 245, 0.5)), url(../public/assets/grids-bg.png);
+  background-size: 15px 15px;
+}
+.properties-panel{
+  // position: absolute;
+  // right: 0;
+  // top: 0;
+  width: 300px;
+  margin-left: 5px;
+
+  border: 1px solid #ccc;
+  background-color: #f0f2f5;
+}
+ 

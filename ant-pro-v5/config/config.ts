@@ -272,6 +272,12 @@ export default defineConfig({
           path: '/editor/koni',
           component: './editor/koni',
         },
+        {
+          name: 'bpmn',
+          icon: 'smile',
+          path: '/editor/bpmn',
+          component: './editor/bpmn',
+        },
       ],
     },
     {
@@ -314,7 +320,7 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
-  mfsu: {},
+  // mfsu: {},
   webpack5: {},
   exportStatic: {},
 });

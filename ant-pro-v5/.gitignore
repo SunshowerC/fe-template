@@ -25,6 +25,7 @@ yarn.lock
 # visual studio code
 .history
 *.log
+logs
 functions/*
 .temp/**
 

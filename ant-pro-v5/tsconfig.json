@@ -12,8 +12,9 @@
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
+
     "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true,
+
     "allowJs": true,
     "skipLibCheck": true,
     "experimentalDecorators": true,
@@ -21,7 +22,11 @@
     "paths": {
       "@/*": ["./src/*"],
       "@@/*": ["./src/.umi/*"]
-    }
+    },
+
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
   },
   "include": [
     "mock/**/*",
@@ -36,6 +41,6 @@
     ".prettierrc.js",
     "jest.config.js",
     "mock/*"
-  ],
+, "logs/bpmn"  ],
   "exclude": ["node_modules", "build", "dist", "scripts", "src/.umi/*", "webpack", "jest"]
 }
