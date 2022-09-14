@@ -1,0 +1,11 @@
+{
+  "name": "nest",
+  "uri": "https://stc.shopee.io/bpmn",
+  "prefix": "NEST",
+  "xml": {
+    "tagAlias": "lowerCase"
+  },
+  "types": [],
+  "emumerations": [],
+  "associations": []
+}
