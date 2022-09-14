@@ -278,6 +278,12 @@ export default defineConfig({
           path: '/editor/bpmn',
           component: './editor/bpmn',
         },
+        {
+          name: 'bpmn-list',
+          icon: 'smile',
+          path: '/editor/bpmn-list',
+          component: './editor/bpmn/list/BpmnList',
+        },
       ],
     },
     {
