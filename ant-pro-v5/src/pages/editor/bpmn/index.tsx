@@ -24,6 +24,8 @@ import { PageContainer } from '@ant-design/pro-layout';
 import { PropertiesEditorDrawerRef, PropertiesEditorDrawer, PropertyFormObj} from './components/PropertiesEditorDrawer';
 import { useBpmn } from './hooks/useBpmn';
 import { transWithoutPrefix } from './utils';
+import { ModalForm, ProFormText } from '@ant-design/pro-form';
+import { ProcessSettingModalForm } from './components/ProcessSettingModalForm';
 
 
 // 全局组件
@@ -77,11 +79,21 @@ function App() {
     onUpdateProperties(selectedElem, val)
   }
 
+  const createBpmnProcess =  async (processForm) => {
+    // processForm.name
+    // bpmn: curXml
+    console.log('create bpmn proces', {
+      bpmnDefinition: curXml,
+      ...processForm
+    })
+  }
+
 
   console.log('curXml', curXml)
   return (
     <PageContainer content="bpmn 流程">
       <Card title="编辑器" className='bpmn-card' extra={[
+        <ProcessSettingModalForm onSubmit={createBpmnProcess} />,
         <Button type="primary">保存</Button>
       ]}>
         <div className='bpmn-container'>
