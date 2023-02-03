@@ -21,6 +21,16 @@ common fe template
 - [x] sql 响应数据的 camel case 、 snakeCase 格式化 【nestjs】
 - [x] nestjs 自动查询 *.module.ts 文件，自动注入，避免手动加载
 - [ ] 接口目录自动读取自动按规则注册接口
+- [ ] 接口规范化异常提醒类型。如 notification，message，modal，自定义。 支持 markdown 语法，
+   ```json
+   {
+     "error": {
+       "notifyType": "notification",
+       "level": "error",
+       "message": "报错了"
+     }
+   }
+   ```
 - 单元测试，集成测试
 
 
@@ -33,3 +43,5 @@ common fe template
 - [ ] tenant 租户模型 
 
 ### react ant-pro
+
+
