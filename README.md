@@ -2,6 +2,11 @@
 common fe template
 
 
+# 基础配置
+- prettier
+- eslint/tslint 
+- lint-staged & husky 
+
 ## 项目
 
 ### nestjs@8
