@@ -10,6 +10,7 @@ common fe template
 ## 项目
 
 ### nestjs@8
+- [ ] 标准化基础增删改查逻辑接口 【create/update/delete/list/get】
 - [ ] 日志规范
   - [x] http context 
   - [x] incoming req / outgoing req & resp 
@@ -25,8 +26,8 @@ common fe template
 - [x] 请求数据，响应数据的 camel case 、 snakeCase 格式化
 - [x] sql 响应数据的 camel case 、 snakeCase 格式化 【nestjs】
 - [x] nestjs 自动查询 *.module.ts 文件，自动注入，避免手动加载
-- [ ] 接口目录自动读取自动按规则注册接口
-- [ ] 接口规范化异常提醒类型。如 notification，message，modal，自定义。 支持 markdown 语法，
+- [x] 接口目录自动读取自动按规则注册接口
+- [x] 接口规范化异常提醒类型。如 notification，message，modal，自定义。 支持 markdown 语法，
    ```json
    {
      "error": {
