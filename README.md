@@ -49,5 +49,6 @@ common fe template
 - [ ] tenant 租户模型 
 
 ### react ant-pro
-
+- 通用登录鉴权拦截处理
+- 规范化异常提醒类型。如 notification，message，modal，自定义。 支持 markdown 语法。 和接口配套
 
