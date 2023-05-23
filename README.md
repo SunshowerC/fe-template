@@ -6,6 +6,7 @@ common fe template
 - prettier
 - eslint/tslint 
 - lint-staged & husky 
+- 文件名规范，snake case/camel case / pascal case
 
 ## 项目
 
